@@ -1,0 +1,19 @@
+<h1 class="text-4xl text-gray-500 pb-8">Categories</h1>
+<table class="w-full">
+  <thead>
+  <tr class="border-t border-b border-slate-300 font-bold text-left">
+    <th class="py-4 pr-4">Category</th>
+    <th class="py-4 pr-4">Message Count</th>
+    <th class="py-4 pr-4">As of Message</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @categories.each do |category| %>
+    <tr class="border-t border-b border-slate-300">
+      <td class="py-4 pr-4"><%= link_to category.id, category_path(category.id), {class: "text-sky-600"} %></td>
+      <td class="py-4 pr-4"><%= category.message_count %></td>
+      <td class="py-4 pr-4"><%= category.last_message_global_position %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

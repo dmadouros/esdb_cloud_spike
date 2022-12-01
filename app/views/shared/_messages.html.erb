@@ -1,0 +1,24 @@
+<table class="w-full">
+  <thead>
+  <tr class="border-t border-b border-slate-300 font-bold text-left">
+    <th class="py-4 pr-4">Event ID</th>
+    <th class="py-4 pr-4">Trace ID</th>
+    <th class="py-4 pr-4">Actor ID</th>
+    <th class="py-4 pr-4">Stream</th>
+    <th class="py-4 pr-4">Type</th>
+    <th class="py-4 pr-4">Timestamp</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% messages.each do |message| %>
+    <tr class="border-t border-b border-slate-300">
+      <td class="py-4 pr-4"><%= link_to message.id, message_path(message.id), {class: "text-sky-600"} %></td>
+      <td class="py-4 pr-4"><%= link_to message.trace_id, correlated_message_path(message.trace_id), {class: "text-sky-600"} %></td>
+      <td class="py-4 pr-4"><%= message.actor_id %></td>
+      <td class="py-4 pr-4"><%= message.stream %></td>
+      <td class="py-4 pr-4"><%= message.event_type %></td>
+      <td class="py-4 pr-4"><%= render partial: "shared/timestamp", locals: {timestamp: message.timestamp} %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
